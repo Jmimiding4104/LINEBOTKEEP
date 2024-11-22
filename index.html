@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 替換成你的 API URL
+    const apiUrl = "https://linebotapi-tgkg.onrender.com/keep/"
+    const apiUrl2 = "https://two0241120linebot.onrender.com"
+
+    // API 請求函式
+    async function callApi() {
+      try {
+        const response = await fetch(apiUrl, {
+          method: "GET", // 可根據需要改為 "POST" 或其他方法
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+        console.log("OK")
+      } catch (error) {
+        console.error("Error calling API:", error)
+      }
+    }
+
+
+    async function callApi2() {
+      try {
+        const response = await fetch(apiUrl2, {
+          method: "GET", // 可根據需要改為 "POST" 或其他方法
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+        console.log("OK")
+      } catch (error) {
+        console.error("Error calling API:", error)
+      }
+    }
+
+    // 當頁面載入時啟動定時器
+    window.onload = function () {
+      callApi() // 預先執行一次
+      callApi2()
+      setInterval(callApi, 300000) // 每隔5分鐘執行
+    }
+  </script>
+</html>
