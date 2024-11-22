@@ -6,6 +6,7 @@
     <title>Document</title>
   </head>
   <body></body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     // 替換成你的 API URL
     const apiUrl = "https://linebotapi-tgkg.onrender.com/keep/"
@@ -33,25 +34,25 @@
     }
 
 
-    async function callApi2() {
-      try {
-        const response = await fetch(apiUrl2, {
-          method: "GET", // 可根據需要改為 "POST" 或其他方法
-          headers: {
-            "Content-Type": "application/json",
-          },
+    function callApi2() {
+      axios.get(apiUrl2)
+        .then((res) => {
+            console.log("OKOKOKOKOK")
         })
-        console.log("OKOKO")
-      } catch (error) {
-        console.error("Error calling API:", error)
-      }
+        .catch((err) => {
+            console.log("QQ")
+        })
+    }
+
+    function API(){
+      callApi()
+      callApi2()
     }
 
     // 當頁面載入時啟動定時器
     window.onload = function () {
-      callApi() // 預先執行一次
-      callApi2()
-      setInterval(callApi, 300000) // 每隔5分鐘執行
+      
+      setInterval(API, 300000) // 每隔5分鐘執行
     }
   </script>
 </html>
